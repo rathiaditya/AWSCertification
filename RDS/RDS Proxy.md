@@ -47,7 +47,9 @@ The proxy adds key security features and simplifies credential management.
 
 ```mermaid
 graph LR
-    subgraph Application Tier
+
+    %% Application Tier
+    subgraph Application_Tier["Application Tier"]
         L1[Lambda 1]
         L2[Lambda 2]
         L3[Lambda 3]
@@ -55,17 +57,27 @@ graph LR
         LC[...]
     end
 
-    subgraph AWS VPC
-        RP[RDS Proxy (Serverless, HA)]
-        RDS[RDS/Aurora DB Instance]
+    %% AWS VPC Tier
+    subgraph AWS_VPC["AWS VPC"]
+        RP[RDS Proxy<br/>(Serverless, HA)]
+        RDS[RDS / Aurora<br/>DB Instance]
     end
 
-    L1 & L2 & L3 & L4 & LC -- Many Connections --> RP
-    RP -- Fewer Pooled Connections --> RDS
+    %% Connections
+    L1 -->|Many Connections| RP
+    L2 -->|Many Connections| RP
+    L3 -->|Many Connections| RP
+    L4 -->|Many Connections| RP
+    LC -->|Many Connections| RP
 
-    style RP fill:#F5E0A7,stroke:#FF9900,stroke-width:2px
-    style RDS fill:#DCEFFB,stroke:#0077CC,stroke-width:2px
+    RP -->|Fewer Pooled Connections| RDS
 
-    note right of RDS: Reduced Load (CPU/RAM)
-    note left of RP: Handles Failovers and Pooling
+    %% Notes
+    RDS:::rds -.->|Reduced Load<br/>(CPU/RAM)| RDS_Note[( )]
+    RP:::proxy -.->|Handles Failovers<br/>and Pooling| RP_Note[( )]
+
+    %% Styles
+    classDef proxy fill:#F5E0A7,stroke:#FF9900,stroke-width:2px;
+    classDef rds fill:#DCEFFB,stroke:#0077CC,stroke-width:2px;
+
 ```
