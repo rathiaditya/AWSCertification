@@ -50,22 +50,16 @@ graph LR
     subgraph Application Tier
         L1[Lambda 1]
         L2[Lambda 2]
-        L3[Lambda 3]
-        L4[Lambda 4]
-        LC[...]
     end
 
     subgraph AWS VPC
-        RP[RDS Proxy (Serverless, HA)]
-        RDS[RDS/Aurora DB Instance]
+        RP[RDS Proxy]
+        RDS[RDS/Aurora DB]
     end
 
-    L1 & L2 & L3 & L4 & LC -- Many Connections --> RP
+    L1 & L2 -- Many Connections --> RP
     RP -- Fewer Pooled Connections --> RDS
 
-    style RP fill:#F5E0A7,stroke:#FF9900,stroke-width:2px
-    style RDS fill:#DCEFFB,stroke:#0077CC,stroke-width:2px
-
-    note right of RDS: Reduced Load (CPU/RAM)
-    note left of RP: Handles Failovers and Pooling
+    note right of RDS: Reduced Load
+    note left of RP: Handles Failovers & Pooling
 ```
