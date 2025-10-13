@@ -59,8 +59,8 @@ graph LR
 
     %% AWS VPC Tier
     subgraph AWS_VPC["AWS VPC"]
-        RP[RDS Proxy<br/>(Serverless, HA)]
-        RDS[RDS / Aurora<br/>DB Instance]
+        RP[RDS Proxy (Serverless, HA)]
+        RDS[RDS / Aurora DB Instance]
     end
 
     %% Connections
@@ -72,12 +72,15 @@ graph LR
 
     RP -->|Fewer Pooled Connections| RDS
 
-    %% Notes
-    RDS:::rds -.->|Reduced Load<br/>(CPU/RAM)| RDS_Note[( )]
-    RP:::proxy -.->|Handles Failovers<br/>and Pooling| RP_Note[( )]
+    %% Notes (GitHub-safe method: simple labels instead of note nodes)
+    RP -.->|Handles Failovers and Pooling| RP_NOTE(( ))
+    RDS -.->|Reduced Load (CPU/RAM)| RDS_NOTE(( ))
 
     %% Styles
     classDef proxy fill:#F5E0A7,stroke:#FF9900,stroke-width:2px;
     classDef rds fill:#DCEFFB,stroke:#0077CC,stroke-width:2px;
+    class RP proxy;
+    class RDS rds;
+
 
 ```
