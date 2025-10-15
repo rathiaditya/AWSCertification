@@ -38,16 +38,17 @@ sequenceDiagram
     participant Cache as ElastiCache
     participant DB as RDS Database
 
-    App->>+Cache: Does data "X" exist?
+    App->>+Cache: Does data X exist?
     alt Cache Hit
-        Cache-->>-App: Yes, here is "X"!
+        Cache-->>-App: Yes, here is X
     else Cache Miss
-        Cache-->>-App: No, "X" not found.
-        App->>+DB: Please give me data "X".
-        DB-->>-App: Here is data "X".
-        App->>+Cache: Store data "X" for next time.
-        Cache-->>-App: OK, "X" is stored.
+        Cache-->>-App: No, X not found
+        App->>+DB: Please give me data X
+        DB-->>-App: Here is data X
+        App->>+Cache: Store data X for next time
+        Cache-->>-App: OK, X is stored
     end
+
 ```
 
 A key challenge with caching is **cache invalidation**: ensuring that old or stale data in the cache is updated or removed when the original data changes in the database.
