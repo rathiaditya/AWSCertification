@@ -78,24 +78,20 @@ Aurora Database Cloning is a fast and efficient way to create copies of an exist
 
 ```mermaid
 graph TD
-    A[Prod Aurora Cluster] -->|Clones| B(Staging Aurora Cluster - Clone)
+    A[Prod Aurora Cluster] --> B[Staging Aurora Cluster Clone]
     
     subgraph Shared Storage Volume
         direction LR
-        S[Initial Data Blocks (Shared)]
+        S[Initial Data Blocks Shared]
     end
     
     A --> S
     B --> S
     
-    A_W[Write to Prod] -->|CoW| S_P[New Block for Prod]
-    B_W[Write to Staging] -->|CoW| S_S[New Block for Staging]
+    A_W[Write to Prod] --> S_P[New Block for Prod]
+    B_W[Write to Staging] --> S_S[New Block for Staging]
 
     style S fill:#ddf,stroke:#333
     style S_P fill:#ccf,stroke:#333
     style S_S fill:#fcc,stroke:#333
-
-    note right of S: Initially, both point to the same data blocks.
-    note right of S_P: Write on Prod causes new block to be allocated (Copy-on-Write).
-    note right of S_S: Write on Staging causes new block to be allocated (Copy-on-Write).
 ```
