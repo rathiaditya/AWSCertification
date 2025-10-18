@@ -81,25 +81,25 @@ This is a critical concept for the exam\!
 ```mermaid
 graph TD
     subgraph Client Applications
-        C1(Client 1)
-        C2(Client 2)
+        C1[Client 1]
+        C2[Client 2]
     end
     
     subgraph Aurora Cluster Endpoints
-        WE(Writer Endpoint)
-        RE(Reader Endpoint)
+        WE[Writer Endpoint]
+        RE[Reader Endpoint]
     end
     
     subgraph Aurora DB Instances
-        M[Master Instance (Writes)]
-        R1[Read Replica 1 (Reads)]
-        R2[Read Replica 2 (Reads)]
-        R_AS[Read Replicas (Auto Scaled)]
+        M[Master Instance Writes]
+        R1[Read Replica 1 Reads]
+        R2[Read Replica 2 Reads]
+        R_AS[Read Replicas Auto Scaled]
     end
     
     subgraph Aurora Shared Storage
-        SS[Shared Storage Volume]
         direction LR
+        SS[Shared Storage Volume]
         S_REP[Replicated]
         S_SH[Self-Healing]
         S_AE[Auto-Expanding 10GB to 128TB]
@@ -113,14 +113,14 @@ graph TD
     RE --> R2
     RE --> R_AS
     
-    M -->|Writes| SS
+    M --> SS
     SS --> S_REP
     SS --> S_SH
     SS --> S_AE
     
-    R1 -->|Reads| SS
-    R2 -->|Reads| SS
-    R_AS -->|Reads| SS
+    R1 --> SS
+    R2 --> SS
+    R_AS --> SS
 ```
 
 -----
