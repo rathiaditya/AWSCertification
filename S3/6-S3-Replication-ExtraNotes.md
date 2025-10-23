@@ -56,7 +56,9 @@ graph TD
     style C fill:#9f9,stroke:#333
 
     A --> B_ObjX[Object_X_Replicates]
-    B -.x-> C_ObjX[Object_X_Does_NOT_Replicate]
+    B -.-> C_ObjX[Object_X_Does_NOT_Replicate]
+
+    linkStyle 3 stroke:red,stroke-width:2px
 ```
 
 -----
