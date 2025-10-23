@@ -84,7 +84,7 @@ Your application running on an EC2 instance needs to write log files to a bucket
 
 ```mermaid
 graph TD
-    EC2[EC2 Instance] -- "Assumes IAM Role" --> Role[IAM Role (Keycard)] --> S3[S3 Bucket];
+    EC2[EC2_Instance] -- Assumes_IAM_Role --> Role[IAM_Role_Keycard] --> S3[S3_Bucket]    
 ```
 
 ### \#\#\# Scenario 3: Public Website Access
@@ -114,9 +114,9 @@ You need to allow a user from *another* AWS account to access your bucket.
 
 ```mermaid
 graph TD
-    User[IAM User (Account B)] -- "Makes Request" --> S3[S3 Bucket (Account A)];
-    S3 -- "Checks Bucket Policy (Door List)" --> B_Policy["Principal: Account B"];
-    B_Policy -- "Effect: Allow" --> Access[Access Granted];
+    User[IAM_User_Account_B] -- Makes_Request --> S3[S3_Bucket_Account_A]
+    S3 -- Checks_Bucket_Policy_Door_List --> B_Policy[Principal_Account_B]
+    B_Policy -- Effect_Allow --> Access[Access_Granted]
 ```
 
 -----
