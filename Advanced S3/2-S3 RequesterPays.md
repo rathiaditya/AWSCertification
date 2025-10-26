@@ -56,12 +56,9 @@ graph TD
         Requester[🧑‍💻 Authenticated AWS User] -->|Downloads file| S3
         S3 -->|Data Transfer Cost| Requester
     end
-
     style Owner fill:#ddf,stroke:#333
     style Requester fill:#dfd,stroke:#333
     style S3 fill:#ffd,stroke:#333
- Requester
-    end
 ```
 
 -----
