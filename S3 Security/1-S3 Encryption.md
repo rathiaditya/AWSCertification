@@ -131,29 +131,17 @@ graph TD
         B --> M2
         C --> M3
         D --> M4
-
-        style M1 fill:#c7e1e6,stroke:#333
-        style M2 fill:#a1d1d6,stroke:#333
-        style M3 fill:#73bfc7,stroke:#333
-        style M4 fill:#45a2a9,stroke:#333
     end
 
     subgraph Encryption_In_Transit
         E[Client / User] -->|Always Recommended / Required for SSE-C| F[HTTPS / TLS]
         F --> G[S3 Endpoint]
         H[Bucket Policy Enforcement] --> F
-
-        style E fill:#f9f,stroke:#333
-        style F fill:#d4f6d4,stroke:#3c3
-        style G fill:#f9f,stroke:#333
-        style H fill:#f0e68c,stroke:#daa520
     end
 
     subgraph KMS_Quota_Limitation
         I[High Throughput S3] --> J[High Volume KMS API Calls]
         J --> K[Risk of Throttling / Service Quota Limits]
-
-        style K fill:#ffdddd,stroke:#ff0000
     end
 
     B --> I
