@@ -1,8 +1,3 @@
-tool\_code
-print(google\_search.search(queries=['AWS DocumentDB vs Aurora comparison', 'DocumentDB scaling features', 'DocumentDB storage growth']))
-
-# I will search for a comparison between DocumentDB and Aurora to better frame the "Aurora for MongoDB" analogy, details on its scaling, and its storage growth mechanism to provide a comprehensive learning guide as requested. I will also check for the core DocumentDB features (e.g., consistency, serverless options) that might be missing from the short transcript.
-
 # 💻 AWS Database Deep Dive: DocumentDB Learning Guide
 
 This guide is an interesting learning experience for the AWS DocumentDB service, comparing it to Amazon Aurora and its relationship with MongoDB.
