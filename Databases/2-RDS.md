@@ -67,5 +67,4 @@ graph TD
 -----
 
 ### 🚀 Next Step
-
-The transcript summarized core features of Amazon RDS. An important related service not explicitly covered is **Amazon Aurora**, which is AWS's cloud-native relational database that significantly improves performance, scalability, and availability over traditional RDS.
+ An important related service not explicitly covered is **Amazon Aurora**, which is AWS's cloud-native relational database that significantly improves performance, scalability, and availability over traditional RDS.
