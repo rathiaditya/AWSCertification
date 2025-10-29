@@ -106,7 +106,7 @@ graph LR
     subgraph Event Processing
         B --> C{AWS Lambda}
         B --> D[Kinesis Data Streams via Adapter]
-        D --> E{Lambda Firehose Analytics}
+        D --> E{Kinesis Firehose Analytics}
     end
 
     style C fill:#f9f,stroke:#333
