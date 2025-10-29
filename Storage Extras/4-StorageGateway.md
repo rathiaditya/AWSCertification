@@ -58,31 +58,26 @@ This diagram illustrates how the three gateways sit between your local infrastru
 ```mermaid
 graph TD
     subgraph On-Premises Data Center
-        A[App Server (File Share)]
-        B[App Server (Volume Mount)]
-        C[Backup Server (Tape-based)]
+        A[App Server File Share]
+        B[App Server Volume Mount]
+        C[Backup Server Tape-based]
         
-        A -->|NFS / SMB| FG(S3 File Gateway VM)
-        B -->|iSCSI| VG(Volume Gateway VM)
-        C -->|iSCSI VTL| TG(Tape Gateway VM)
+        A -->|NFS / SMB| FG[S3 File Gateway VM]
+        B -->|iSCSI| VG[Volume Gateway VM]
+        C -->|iSCSI VTL| TG[Tape Gateway VM]
     end
     
     subgraph AWS Cloud
-        S3[Amazon S3 Buckets (Main Storage)]
-        GLACIER[S3 Glacier / Deep Archive (Archive)]
-        EBS[Amazon EBS Volumes (Restore)]
+        S3[Amazon S3 Buckets Main Storage]
+        GLACIER[S3 Glacier Deep Archive]
+        EBS[Amazon EBS Volumes Restore]
     end
     
     FG -->|HTTPS| S3
-    VG -->|Data/Snapshots| S3
+    VG -->|Data Snapshots| S3
     TG -->|Virtual Tapes| S3
     S3 -->|Lifecycle Policy| GLACIER
     S3 -->|Restored as| EBS
-    
-    style FG fill:#90EE90,stroke:#3C3,stroke-width:2px
-    style VG fill:#ADD8E6,stroke:#39F,stroke-width:2px
-    style TG fill:#FFB6C1,stroke:#F66,stroke-width:2px
-    style S3 fill:#FFD700
 ```
 
 -----
