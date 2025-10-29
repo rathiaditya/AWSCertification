@@ -65,24 +65,36 @@ Snowball devices are designed to be **highly secure** and **tamper-resistant** f
 ## 📐 Conceptual Diagram (Mermaid)
 
 ```mermaid
-graph TD
-    subgraph Data_Migration_Process
-        A[Order Snowball Edge Device via AWS Console] --> B[AWS Ships Physical Device to Customer]
-        B --> C[Load Data onto Device in Customer Data Center]
-        C --> D[Ship Device Back to AWS]
-        D --> E[AWS Transfers Data to S3 Bucket]
-    end
+flowchart TD
+ subgraph Data_Migration_Process["Data_Migration_Process"]
+        B["AWS Ships Physical Device to Customer"]
+        A["Order Snowball Edge Device via AWS Console"]
+        C["Load Data onto Device in Customer Data Center"]
+        D["Ship Device Back to AWS"]
+        E["AWS Transfers Data to S3 Bucket"]
+  end
+ subgraph Edge_Computing_Use_Case["Edge_Computing_Use_Case"]
+        G["Snowball Edge Compute Optimized"]
+        F["Edge Location Truck Ship Mine with Limited Connectivity"]
+        H["Run EC2 or Lambda for Data Preprocessing or ML at the Edge"]
+        I["Send Processed Data Back to AWS or Ship Back"]
+  end
+ subgraph Snowball_Device_Types["Snowball_Device_Types"]
+        K["Storage Optimized 210 TB - Focus Data Transfer"]
+        J["AWS Snowball Edge"]
+        L["Compute Optimized 28 TB - Focus Edge Processing"]
+  end
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    F --> G
+    G --> H
+    H --> I
+    J --> K & L
+    F --> G
 
-    subgraph Edge_Computing_Use_Case
-        F[Edge Location Truck Ship Mine with Limited Connectivity] --> G[Snowball Edge Compute Optimized]
-        G --> H[Run EC2 or Lambda for Data Preprocessing or ML at the Edge]
-        H --> I[Send Processed Data Back to AWS or Ship Back]
-    end
 
-    subgraph Snowball_Device_Types
-        J[AWS Snowball Edge] --> K[Storage Optimized 210 TB - Focus Data Transfer]
-        J --> L[Compute Optimized 28 TB - Focus Edge Processing]
-    end
 ```
 
 -----
