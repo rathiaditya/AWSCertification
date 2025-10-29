@@ -100,18 +100,18 @@ DynamoDB captures all item-level changes (Create, Update, Delete) in a stream, w
 ```mermaid
 graph LR
     subgraph DynamoDB
-        A[DynamoDB Table] --> B(DynamoDB Stream);
+        A[DynamoDB Table] --> B[DynamoDB Stream]
     end
     
     subgraph Event Processing
-        B --> C{AWS Lambda};
-        B --> D(Kinesis Data Streams - via Adapter);
-        D --> E{Lambda, Firehose, Analytics};
+        B --> C{AWS Lambda}
+        B --> D[Kinesis Data Streams via Adapter]
+        D --> E{Lambda Firehose Analytics}
     end
 
     style C fill:#f9f,stroke:#333
     style E fill:#ccf,stroke:#333
 
-    C -- Process Change --> Action[Application Logic];
-    E -- Process/Load Data --> Destination[Data Lake/Warehouse (S3, Redshift)];
+    C -- Process Change --> Action[Application Logic]
+    E -- Process or Load Data --> Destination[Data Lake or Warehouse S3 Redshift]
 ```
