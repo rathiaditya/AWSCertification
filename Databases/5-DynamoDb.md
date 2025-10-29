@@ -98,21 +98,20 @@ DynamoDB captures all item-level changes (Create, Update, Delete) in a stream, w
 #### Event Processing Architecture
 
 ```mermaid
-graph TD
-    subgraph Workload Patterns
-        A[Predictable or Steady Load] --> Provisioned[Provisioned Mode]
-        B[Unpredictable or Spiky Load] --> OnDemand[On-Demand Mode]
+graph LR
+    subgraph DynamoDB
+        A[DynamoDB Table] --> B(DynamoDB Stream);
+    end
+    
+    subgraph Event Processing
+        B --> C{AWS Lambda};
+        B --> D(Kinesis Data Streams - via Adapter);
+        D --> E{Lambda, Firehose, Analytics};
     end
 
-    subgraph Provisioned Mode Flow
-        Provisioned --> ProvisionRCUs[Set RCU WCU]
-        ProvisionRCUs --> OptionalAutoScaling[Optional Auto Scaling]
-        OptionalAutoScaling --> SmoothWorkload[Best for Smooth Workload]
-    end
+    style C fill:#f9f,stroke:#333
+    style E fill:#ccf,stroke:#333
 
-    subgraph On-Demand Mode Flow
-        OnDemand --> NoProvisioning[No Capacity to Provision]
-        NoProvisioning --> AutoScale[Automatically Scales]
-        AutoScale --> UnpredictableWorkload[Best for Unpredictable Workload]
-    end
+    C -- Process Change --> Action[Application Logic];
+    E -- Process/Load Data --> Destination[Data Lake/Warehouse (S3, Redshift)];
 ```
