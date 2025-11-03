@@ -23,15 +23,13 @@ graph LR
         A[Source Code Repository]
         B[Docker Container Image]
     end
-    
     subgraph AWS App Runner Service
-        A -- OR --> C(Configure Settings: vCPU, Memory, AutoScaling)
+        A -- OR --> C[Configure Settings vCPU Memory AutoScaling]
         B --> C
-        C --> D[Automatic Build & Deployment]
-        D --> E{Managed Infrastructure (Containers, Load Balancing, Scaling)}
+        C --> D[Automatic Build and Deployment]
+        D --> E[Managed Infrastructure Containers Load Balancing Scaling]
     end
-    
-    E --> F(Deployed Web App / API URL)
+    E --> F[Deployed Web App or API URL]
 ```
 
 -----
