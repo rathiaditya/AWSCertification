@@ -56,29 +56,34 @@ sequenceDiagram
     participant Q as SQS FIFO Queue
     participant C as Consumer
     
-    P->>Q: SendMsg ID 1 Group A
-    P->>Q: SendMsg ID 2 Group A
-    P->>Q: SendMsg ID 3 Group B
-    P->>Q: SendMsg ID 4 Group A
+    P->>Q: SendMsg (ID=1, Group=A)
+    P->>Q: SendMsg (ID=2, Group=A)
+    P->>Q: SendMsg (ID=3, Group=B)
+    P->>Q: SendMsg (ID=4, Group=A)
     
-    Note over Q: Messages 1 2 and 4 are in Group A. Message 3 is in Group B.
+    Note over Q: Messages 1, 2, and 4 are in Group A. Message 3 is in Group B.
     
-    C->>Q: Receive Message
-    Q-->>C: Msg 1 Group A
-    Note over Q: Next message for Group A Msg 2 is blocked until Msg 1 is deleted.
+    C->>Q: ReceiveMessage
+    Q-->>C: Msg 1 (Group A)
+    Note over Q: Next message for Group A (Msg 2) is blocked until Msg 1 is deleted.
     
-    C->>Q: Receive Message
-    Q-->>C: Msg 3 Group B
-    Note over Q: Message 3 can be processed in parallel because it is a different group.
+    C->>Q: ReceiveMessage
+    Q-->>C: Msg 3 (Group B)
+    Note over Q: Message 3 can be processed in parallel because it's a different group.
     
     C->>Q: Delete Msg 1
     Note over Q: Group A is unlocked.
     
-    C->>Q: Receive Message
-    Q-->>C: Msg 2 Group A
+    C->>Q: ReceiveMessage
+    Q-->>C: Msg 2 (Group A)
     
     C->>Q: Delete Msg 2
     
-    C->>Q: Receive Message
-    Q-->>C: Msg 4 Group A
+    C->>Q: ReceiveMessage
+    Q-->>C: Msg 4 (Group A)
+
+    
+    style Q fill:#ffc,stroke:#333
 ```
+
+Would you like a side-by-side comparison of SQS **Standard** and SQS **FIFO** queues to clearly distinguish between the two?
