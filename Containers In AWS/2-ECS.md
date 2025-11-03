@@ -58,6 +58,3 @@ Since container data is ephemeral, long-term or shared storage is needed for sta
 * **Amazon EFS (Elastic File System):** A network file system compatible with **both EC2 and Fargate** launch types.
 * **Use Case:** Allows you to **mount a file system** directly onto ECS Tasks for **persistent, multi-AZ shared storage**.
 * **The Ultimate Serverless Combo:** Using **Fargate** (serverless compute) with **Amazon EFS** (serverless shared storage) provides a fully managed, scalable solution where you manage no infrastructure.
-
-To see a side-by-side comparison of the EC2 and Fargate launch types in action, check out this video: [AWS ECS | Fargate vs EC2 Launch Types Explained for Beginners](https://www.youtube.com/watch?v=oO-mGql5JvQ).
-http://googleusercontent.com/youtube_content/8
