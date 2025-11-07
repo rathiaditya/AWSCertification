@@ -11,8 +11,8 @@ These limits define the performance and operational boundaries for a running Lam
 | Limit Category | Constraint | Key Takeaway |
 | :--- | :--- | :--- |
 | **Maximum Execution Time** | **900 seconds (15 minutes)** | Any job requiring longer than 15 minutes is **not** suitable for Lambda. |
-| **Memory Allocation** | **128 MB to 10 GB** | Configurable in **64 MB increments**. Increasing RAM proportionally increases CPU and network performance. |
-| **Temporary Disk Space (`/tmp`)** | **Up to 10 GB** | Use this directory for pulling or creating large files during execution (e.g., downloading a file from S3 to process). |
+| **Memory Allocation** | **128 MB to 10 GB** | Configurable in **1 MB increments**. Increasing RAM proportionally increases CPU and network performance. |
+| **Temporary Disk Space (`/tmp`)** | **512Mb to 10 GB** | Use this directory for pulling or creating large files during execution (e.g., downloading a file from S3 to process). |
 | **Concurrent Executions** | **1,000** (Soft limit, can be increased) | The default maximum number of functions that can run simultaneously across your entire account in a region. Use **Reserved Concurrency** to guarantee capacity for critical functions. |
 | **Environment Variables** | **4 KB** | Limited space for configuration settings. Do **not** use for large files or complex data structures. |
 
