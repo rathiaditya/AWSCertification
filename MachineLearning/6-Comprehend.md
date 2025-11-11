@@ -29,10 +29,11 @@ Comprehend fits seamlessly into an analytical pipeline, often following ingestio
 
 ```mermaid
 graph TD
-    A[Unstructured Data - Emails, Social Posts] --> B[Ingestion - Kinesis]
+    A[Unstructured Data<br>Emails, Social Posts] --> B[Ingestion<br>Kinesis]
     B --> C[Amazon Comprehend]
-    C -->|Entity Extraction, Sentiment Analysis| D[Structured Insights - S3 or DynamoDB]
-    D --> E[Amazon QuickSight or Data Warehouse]
+    C -->|Entity Extraction<br>Sentiment Analysis| D[Structured Insights<br>S3 or DynamoDB]
+    D --> E[Amazon QuickSight<br>or Data Warehouse]
+
 ```
 
 -----
